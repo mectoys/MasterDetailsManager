@@ -16,6 +16,11 @@ namespace DAL
             return _facturaRepository.ExecuteQuery(query);
         }
 
+        public List<FacturaDetalle> ObtenerDetalleFactura(int facturaId)
+        {
+            return _facturaRepository.ObtenerDetalleporFactura(facturaId);
+        }
+
         public int CrearFactura(Factura factura)
         {
             if (factura == null || factura.Detalles == null || factura.Detalles.Count == 0)
