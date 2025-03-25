@@ -177,5 +177,22 @@ namespace UI
             precio.Clear();
             detalle.Rows.Clear();
         }
+
+        private void BuscarInformacion(TextBox valorBuscar)
+        {
+            DataView dv = null;
+            dv = new DataView(dsdatos.Tables["Factura"], "Cliente LIKE '*" + valorBuscar.Text.Replace("'", "") + "*' ", "Cliente Desc", DataViewRowState.CurrentRows);
+            listado.DataSource = dv;
+        }
+
+        private void busqueda_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter) BuscarInformacion(busqueda);
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
