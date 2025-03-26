@@ -19,10 +19,7 @@ namespace UI
         public MasterDetails()
         {
             InitializeComponent();
-        }
 
-        private void MasterDetails_Load(object sender, EventArgs e)
-        {
             detalle.ColumnCount = 4;
             detalle.Columns[0].Name = "producto";
             detalle.Columns[1].Name = "Precio";
@@ -31,6 +28,7 @@ namespace UI
             dsdatos = _facturaBLL.ObtenerFactura();
             listado.DataSource = dsdatos;
             listado.DataMember = "Factura";
+            detalle.Columns[3].Visible = false;
         }
 
         private void agregar_Click(object sender, EventArgs e)
@@ -54,7 +52,6 @@ namespace UI
                 detalle["Precio", detalle.CurrentCell.RowIndex].Value = precio.Text;
                 detalle["Cantidad", detalle.CurrentCell.RowIndex].Value = cantidad.Text;
             }
-
             Modostatusedit = false;
         }
 
@@ -90,10 +87,8 @@ namespace UI
                     producto.Text = detalle["producto", detalle.CurrentCell.RowIndex].Value.ToString();
                     precio.Text = detalle["Precio", detalle.CurrentCell.RowIndex].Value.ToString();
                     cantidad.Text = detalle["Cantidad", detalle.CurrentCell.RowIndex].Value.ToString();
-
                     Modostatusedit = true;
                 }
-
             }
         }
 
@@ -166,18 +161,6 @@ namespace UI
             }
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-            Tipo = 0;
-            codigo.Clear();
-            cliente.Clear();
-            fecha.Value = DateTime.Now;
-            producto.Clear();
-            cantidad.Clear();
-            precio.Clear();
-            detalle.Rows.Clear();
-        }
-
         private void BuscarInformacion(TextBox valorBuscar)
         {
             DataView dv = null;
@@ -191,6 +174,39 @@ namespace UI
         }
 
         private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            if (codigo.Text.Length > 0)
+            {
+                DialogResult resultado = MessageBox.Show("Desea Anular el registro?", Application.ProductName, MessageBoxButtons.YesNo);
+                if (resultado == DialogResult.Yes)
+                {
+                    var factura = new Factura
+                    {
+                        Id = Convert.ToInt32(codigo.Text)
+                    };
+                    _facturaBLL.AnularFactura(factura);
+                    Limpiar();
+                }
+            }
+        }
+
+        private void nuevo_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+        }
+        private void Limpiar()
+        {
+            Tipo = 0;
+            codigo.Clear();
+            cliente.Clear();
+            fecha.Value = DateTime.Now;
+            producto.Clear();
+            cantidad.Clear();
+            precio.Clear();
+            detalle.Rows.Clear();
+        }
+
+        private void MasterDetails_Load(object sender, EventArgs e)
         {
 
         }

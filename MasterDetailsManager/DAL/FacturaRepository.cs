@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAL.Repositories;
+﻿using DAL.Repositories;
 using Models;
 using MySql.Data.MySqlClient;
+using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace DAL
 {
@@ -30,22 +27,22 @@ namespace DAL
 
         public void InsertarFacturaConDetalles(Factura factura, List<FacturaDetalle> detalles)
         {
-            if (factura == null || detalles==null || detalles.Count==0)
+            if (factura == null || detalles == null || detalles.Count == 0)
                 throw new ArgumentException("La factura o los detalles no son válidos.");
 
-            using (var conn= dBConnection.GetConnection())
+            using (var conn = dBConnection.GetConnection())
             {
                 conn.Open();
-                using (var transaction= conn.BeginTransaction())
+                using (var transaction = conn.BeginTransaction())
                 {
                     try
                     {
-                        var insertFacturaSql = @"INSERT INTO voucherdb.factura (Cliente, Fecha) 
-                                         VALUES (@Cliente, @Fecha);
+                        var insertFacturaSql = @"INSERT INTO voucherdb.factura (Cliente, Fecha, state) 
+                                         VALUES (@Cliente, @Fecha, 1);
                                          SELECT LAST_INSERT_ID();";
 
                         int facturaId;
-                        using (var commandFactura= new MySqlCommand(insertFacturaSql,conn,transaction))
+                        using (var commandFactura = new MySqlCommand(insertFacturaSql, conn, transaction))
                         {
                             commandFactura.Parameters.AddWithValue("@Cliente", factura.Cliente);
                             commandFactura.Parameters.AddWithValue("@Fecha", factura.Fecha);
@@ -184,6 +181,30 @@ namespace DAL
 
         }
 
-
+        public void AnularFactura(Factura factura)
+        {
+            using (var conn = dBConnection.GetConnection())
+            {
+                conn.Open();
+                using (var transaction = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        var queryFactura = @"UPDATE factura SET state = 0 WHERE Id = @Id";
+                        using (var command = new MySqlCommand(queryFactura, conn, transaction))
+                        {
+                            command.Parameters.AddWithValue("@Id", factura.Id);
+                            command.ExecuteNonQuery();
+                        }
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw new Exception("Error al anular la factura. Transacción revertida.", ex);
+                    }
+                }
+            }
+        }
     }
 }

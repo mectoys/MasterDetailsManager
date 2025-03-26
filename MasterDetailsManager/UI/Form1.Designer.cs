@@ -51,9 +51,9 @@
             this.codigo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.nuevo = new System.Windows.Forms.ToolStripButton();
             this.aceptar = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.anular = new System.Windows.Forms.ToolStripButton();
             this.TabMasterDetails.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listado)).BeginInit();
@@ -201,6 +201,7 @@
             // 
             // codigo
             // 
+            this.codigo.BackColor = System.Drawing.SystemColors.Info;
             resources.ApplyResources(this.codigo, "codigo");
             this.codigo.Name = "codigo";
             // 
@@ -213,17 +214,17 @@
             // 
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
+            this.nuevo,
             this.aceptar,
-            this.toolStripButton3});
+            this.anular});
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
             // 
-            // toolStripButton1
+            // nuevo
             // 
-            resources.ApplyResources(this.toolStripButton1, "toolStripButton1");
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            resources.ApplyResources(this.nuevo, "nuevo");
+            this.nuevo.Name = "nuevo";
+            this.nuevo.Click += new System.EventHandler(this.nuevo_Click);
             // 
             // aceptar
             // 
@@ -231,11 +232,11 @@
             this.aceptar.Name = "aceptar";
             this.aceptar.Click += new System.EventHandler(this.aceptar_Click);
             // 
-            // toolStripButton3
+            // anular
             // 
-            resources.ApplyResources(this.toolStripButton3, "toolStripButton3");
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+            resources.ApplyResources(this.anular, "anular");
+            this.anular.Name = "anular";
+            this.anular.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // MasterDetails
             // 
@@ -282,9 +283,9 @@
         private System.Windows.Forms.TextBox codigo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton nuevo;
         private System.Windows.Forms.ToolStripButton aceptar;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton anular;
         private System.Windows.Forms.TextBox busqueda;
         private System.Windows.Forms.Label label7;
     }

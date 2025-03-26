@@ -12,7 +12,7 @@ namespace DAL
 
         public DataSet ObtenerFactura()
         {
-            string query = "select Id,Cliente,Fecha from factura";
+            string query = "select Id,Cliente,Fecha from factura where state=1";
             return _facturaRepository.ExecuteQuery(query);
         }
 
@@ -52,6 +52,11 @@ namespace DAL
 
             // Transacción para manejar todos los cambios
             _facturaRepository.ActualizarFacturaConDetalles(factura, nuevosDetalles, detallesActualizados, detallesAEliminar);
+        }
+        public void AnularFactura(Factura factura)
+        {
+            _facturaRepository.AnularFactura(factura);
+
         }
 
     }
