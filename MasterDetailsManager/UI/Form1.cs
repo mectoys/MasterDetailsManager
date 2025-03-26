@@ -36,6 +36,24 @@ namespace UI
         {
             decimal varTotal;
 
+            if (producto.Text.Length==0)
+            {
+                MessageBox.Show("Ingrese Producto", "Master Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                producto.Focus();
+                return;
+            }
+            if (cantidad.Text.Length == 0)
+            {
+                MessageBox.Show("Ingrese Cantidad", "Master Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cantidad.Focus();
+                return;
+            }
+            if (precio.Text.Length == 0)
+            {
+                MessageBox.Show("Ingrese Precio", "Master Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                precio.Focus(); 
+                return;
+            }
             varTotal = Convert.ToDecimal(cantidad.Text) * Convert.ToDecimal(precio.Text);
 
             if (Modostatusedit == false)
@@ -64,6 +82,7 @@ namespace UI
             precio.Clear();
             cantidad.Clear();
             producto.Focus();
+            CalcularTotal();
 
         }
 
@@ -106,6 +125,19 @@ namespace UI
 
         private void aceptar_Click(object sender, EventArgs e)
         {
+            if (cliente.Text.Length == 0)
+            {
+                MessageBox.Show("Ingrese Cliente", "Master Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cliente.Focus();
+                return;
+            }
+            if (detalle.Rows.Count==0)
+            {
+                MessageBox.Show("Ingrese datos al detalle", "Master Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cliente.Focus();
+                return;
+            }
+
             if (Tipo == 0)
             {
                 var factura = new Factura
@@ -132,6 +164,8 @@ namespace UI
 
             }
             Tipo = 1;
+            CalcularTotal();
+            MessageBox.Show("Operaación realizada", "Master Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void TabMasterDetails_SelectedIndexChanged(object sender, EventArgs e)
@@ -171,7 +205,7 @@ namespace UI
                 if (resultado == DialogResult.Yes)
                 {
                     if (detalle["producto", 0].Value != null) detalle.Rows.RemoveAt(detalle.SelectedCells[0].RowIndex);
-
+                    CalcularTotal();
                 }
             }
         }
@@ -201,6 +235,8 @@ namespace UI
                     };
                     _facturaBLL.AnularFactura(factura);
                     Limpiar();
+                    MessageBox.Show("Operaación realizada", "Master Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
             }
         }
@@ -249,7 +285,31 @@ namespace UI
 
         private void detalle_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            CalcularTotal();
+            
+        }
+
+        private void cantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permite solo números y la tecla de retroceso
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Cancela la entrada del carácter no permitido
+            }
+        }
+
+        private void precio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+                // Permitir números, un solo punto decimal y la tecla de retroceso
+    if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+    {
+        e.Handled = true;
+    }
+
+    // Evitar múltiples puntos decimales
+    if (e.KeyChar == '.' && (sender as TextBox).Text.Contains("."))
+    {
+        e.Handled = true;
+    }
         }
     }
 }

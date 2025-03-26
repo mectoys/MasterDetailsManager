@@ -35,6 +35,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.listado = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.totales = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.retirar = new System.Windows.Forms.Button();
             this.agregar = new System.Windows.Forms.Button();
             this.precio = new System.Windows.Forms.TextBox();
@@ -54,8 +56,6 @@
             this.nuevo = new System.Windows.Forms.ToolStripButton();
             this.aceptar = new System.Windows.Forms.ToolStripButton();
             this.anular = new System.Windows.Forms.ToolStripButton();
-            this.totales = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.TabMasterDetails.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listado)).BeginInit();
@@ -128,6 +128,18 @@
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // totales
+            // 
+            this.totales.BackColor = System.Drawing.SystemColors.Info;
+            this.totales.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.totales, "totales");
+            this.totales.Name = "totales";
+            // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
+            // 
             // retirar
             // 
             resources.ApplyResources(this.retirar, "retirar");
@@ -146,6 +158,7 @@
             // 
             resources.ApplyResources(this.precio, "precio");
             this.precio.Name = "precio";
+            this.precio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.precio_KeyPress);
             // 
             // label6
             // 
@@ -156,6 +169,7 @@
             // 
             resources.ApplyResources(this.cantidad, "cantidad");
             this.cantidad.Name = "cantidad";
+            this.cantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cantidad_KeyPress);
             // 
             // label5
             // 
@@ -244,18 +258,6 @@
             resources.ApplyResources(this.anular, "anular");
             this.anular.Name = "anular";
             this.anular.Click += new System.EventHandler(this.toolStripButton3_Click);
-            // 
-            // totales
-            // 
-            this.totales.BackColor = System.Drawing.SystemColors.Info;
-            this.totales.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.totales, "totales");
-            this.totales.Name = "totales";
-            // 
-            // label8
-            // 
-            resources.ApplyResources(this.label8, "label8");
-            this.label8.Name = "label8";
             // 
             // MasterDetails
             // 
