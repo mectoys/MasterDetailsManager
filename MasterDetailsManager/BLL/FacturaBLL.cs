@@ -27,10 +27,10 @@ namespace DAL
                 throw new ArgumentException("La factura o sus detalles no son válidos.");
 
             // Llamar al método transaccional desde el repositorio
-            _facturaRepository.InsertarFacturaConDetalles(factura, factura.Detalles);
+            
 
             // Retornar el ID de la factura creada
-            return factura.Id; // Asume que `Id` se asigna dentro del método InsertarFacturaConDetalles
+            return factura.Id = _facturaRepository.InsertarFacturaConDetalles(factura, factura.Detalles); // Asume que `Id` se asigna dentro del método InsertarFacturaConDetalles
         }
 
         public void ActualizarFactura(Factura factura)

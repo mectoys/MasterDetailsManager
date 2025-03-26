@@ -20,11 +20,12 @@ namespace UI
         {
             InitializeComponent();
 
-            detalle.ColumnCount = 4;
+            detalle.ColumnCount = 5;
             detalle.Columns[0].Name = "producto";
             detalle.Columns[1].Name = "Precio";
             detalle.Columns[2].Name = "Cantidad";
             detalle.Columns[3].Name = "Id";
+            detalle.Columns[4].Name = "Total";
             dsdatos = _facturaBLL.ObtenerFactura();
             listado.DataSource = dsdatos;
             listado.DataMember = "Factura";
@@ -33,6 +34,10 @@ namespace UI
 
         private void agregar_Click(object sender, EventArgs e)
         {
+            decimal varTotal;
+
+            varTotal = Convert.ToDecimal(cantidad.Text) * Convert.ToDecimal(precio.Text);
+
             if (Modostatusedit == false)
             {
                 var detalleX = new FacturaDetalle
@@ -40,19 +45,26 @@ namespace UI
 
                     Producto = producto.Text,
                     Cantidad = Convert.ToInt16(cantidad.Text),
-                    Precio = Convert.ToInt16(precio.Text)
+                    Precio = Convert.ToDecimal(precio.Text)
                 };
                 _detalles.Add(detalleX);
-
-                detalle.Rows.Add(producto.Text, precio.Text, cantidad.Text, 0);
+                
+                detalle.Rows.Add(producto.Text, precio.Text, cantidad.Text, 0, varTotal);
             }
             else
             {
+                varTotal = Convert.ToDecimal(cantidad.Text) * Convert.ToDecimal(precio.Text);
                 detalle["producto", detalle.CurrentCell.RowIndex].Value = producto.Text;
                 detalle["Precio", detalle.CurrentCell.RowIndex].Value = precio.Text;
                 detalle["Cantidad", detalle.CurrentCell.RowIndex].Value = cantidad.Text;
+                detalle["Total", detalle.CurrentCell.RowIndex].Value = varTotal;
             }
             Modostatusedit = false;
+            producto.Clear();
+            precio.Clear();
+            cantidad.Clear();
+            producto.Focus();
+
         }
 
 
@@ -104,7 +116,7 @@ namespace UI
 
                 };
 
-                _facturaBLL.CrearFactura(factura);
+                codigo.Text= _facturaBLL.CrearFactura(factura).ToString();
             }
             else if (Tipo == 1)
             {
@@ -119,6 +131,7 @@ namespace UI
                 _facturaBLL.ActualizarFactura(factura);
 
             }
+            Tipo = 1;
         }
 
         private void TabMasterDetails_SelectedIndexChanged(object sender, EventArgs e)
@@ -137,15 +150,17 @@ namespace UI
             codigo.Text = listado["Id", listado.CurrentCell.RowIndex].Value.ToString();
             cliente.Text = listado["Cliente", listado.CurrentCell.RowIndex].Value.ToString();
             fecha.Value = Convert.ToDateTime(listado["Fecha", listado.CurrentCell.RowIndex].Value.ToString());
-            TabMasterDetails.SelectedIndex = 1;
+
             //Llama a la capa BLL para obtener el detalle
             var details = _facturaBLL.ObtenerDetalleFactura(Convert.ToInt32(codigo.Text));
             //detalle.DataSource = detalles;
             detalle.Rows.Clear();
             foreach (var detail in details)
             {
-                detalle.Rows.Add(detail.Producto, detail.Precio, detail.Cantidad, detail.Id);
+                detalle.Rows.Add(detail.Producto, detail.Precio, detail.Cantidad, detail.Id,detail.Total);
             }
+            CalcularTotal();
+            TabMasterDetails.SelectedIndex = 1;
         }
 
         private void retirar_Click(object sender, EventArgs e)
@@ -193,6 +208,7 @@ namespace UI
         private void nuevo_Click(object sender, EventArgs e)
         {
             Limpiar();
+            TabMasterDetails.SelectedIndex = 1;
         }
         private void Limpiar()
         {
@@ -204,11 +220,36 @@ namespace UI
             cantidad.Clear();
             precio.Clear();
             detalle.Rows.Clear();
+            Modostatusedit = false;
         }
 
         private void MasterDetails_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void CalcularTotal()
+        {
+            decimal total = 0;
+
+            foreach (DataGridViewRow row in detalle.Rows)
+            {
+                if (row.Cells["Total"].Value != null)
+                {
+                    decimal valor;
+                    if (decimal.TryParse(row.Cells["Total"].Value.ToString(), out valor))
+                    {
+                        total += valor;
+                    }
+                }
+            }
+
+            totales.Text = "Total: " + total.ToString("N2"); // Formato con 2 decimales
+        }
+
+        private void detalle_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            CalcularTotal();
         }
     }
 }

@@ -54,6 +54,8 @@
             this.nuevo = new System.Windows.Forms.ToolStripButton();
             this.aceptar = new System.Windows.Forms.ToolStripButton();
             this.anular = new System.Windows.Forms.ToolStripButton();
+            this.totales = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.TabMasterDetails.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listado)).BeginInit();
@@ -93,6 +95,8 @@
             // 
             // listado
             // 
+            this.listado.AllowUserToAddRows = false;
+            this.listado.AllowUserToDeleteRows = false;
             resources.ApplyResources(this.listado, "listado");
             this.listado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listado.Name = "listado";
@@ -103,6 +107,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.totales);
+            this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.retirar);
             this.tabPage2.Controls.Add(this.agregar);
             this.tabPage2.Controls.Add(this.precio);
@@ -176,6 +182,7 @@
             this.detalle.RowTemplate.Height = 24;
             this.detalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.detalle.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.detalle_CellClick);
+            this.detalle.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.detalle_CellValueChanged);
             // 
             // fecha
             // 
@@ -238,6 +245,18 @@
             this.anular.Name = "anular";
             this.anular.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
+            // totales
+            // 
+            this.totales.BackColor = System.Drawing.SystemColors.Info;
+            this.totales.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.totales, "totales");
+            this.totales.Name = "totales";
+            // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
+            // 
             // MasterDetails
             // 
             resources.ApplyResources(this, "$this");
@@ -288,6 +307,8 @@
         private System.Windows.Forms.ToolStripButton anular;
         private System.Windows.Forms.TextBox busqueda;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox totales;
+        private System.Windows.Forms.Label label8;
     }
 }
 

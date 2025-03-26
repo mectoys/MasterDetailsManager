@@ -25,7 +25,7 @@ namespace DAL
 
 
 
-        public void InsertarFacturaConDetalles(Factura factura, List<FacturaDetalle> detalles)
+        public int InsertarFacturaConDetalles(Factura factura, List<FacturaDetalle> detalles)
         {
             if (factura == null || detalles == null || detalles.Count == 0)
                 throw new ArgumentException("La factura o los detalles no son válidos.");
@@ -63,6 +63,7 @@ namespace DAL
 
                         }
                         transaction.Commit();
+                        return facturaId;  // 🔹 Devuelve el ID de la factura insertada
                     }
                     catch (Exception ex)
                     {
@@ -155,7 +156,7 @@ namespace DAL
             using (var con = dBConnection.GetConnection())
             {
                 con.Open();
-                var query = "select Id, FacturaId, Producto, Cantidad,Precio from facturadetalle" +
+                var query = "select Id, FacturaId, Producto, Cantidad,Precio,Cantidad * Precio as Total from facturadetalle" +
                     "  WHERE FacturaId= @FacturaId ";
                 using (var command = new MySqlCommand(query, con))
                 {
@@ -170,7 +171,8 @@ namespace DAL
                                 FacturaId = reader.GetInt32("FacturaId"),
                                 Producto = reader.GetString("Producto"),
                                 Cantidad = reader.GetInt32("Cantidad"),
-                                Precio = reader.GetDecimal("Precio")
+                                Precio = reader.GetDecimal("Precio"),
+                                Total = reader.GetDecimal("Total")
 
                             });
                         }
