@@ -1,5 +1,6 @@
 BizLayer Manager  
 MasterDetailsManager
+![BackgroundIntro](https://github.com/user-attachments/assets/08091206-bd17-428a-a4ad-4b65612ee45d)
 
 📌 Descripción
 
