@@ -3,8 +3,12 @@ using DAL;
 using Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
+using ClosedXML.Excel;
+using System.IO;
 
 namespace UI
 {
@@ -311,5 +315,60 @@ namespace UI
         e.Handled = true;
     }
         }
+
+        private void export_Click(object sender, EventArgs e)
+        {
+            ExportarDataGridView(listado);
+        }
+
+        public static void ExportarDataGridView(DataGridView dgv)
+        {
+            if (dgv.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay datos para exportar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "Archivos de Excel (*.xlsx)|*.xlsx",
+                Title = "Guardar archivo de Excel",
+                FileName = "Exportado.xlsx"
+            };
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                using (var workbook = new XLWorkbook())
+                {
+                    var worksheet = workbook.Worksheets.Add("Datos");
+                    int colIndex = 1;
+
+                    // Agregar encabezados
+                    for (int i = 0; i < dgv.Columns.Count; i++)
+                    {
+                        worksheet.Cell(1, colIndex).Value = dgv.Columns[i].HeaderText;
+                        worksheet.Cell(1, colIndex).Style.Font.Bold = true;
+                        worksheet.Cell(1, colIndex).Style.Fill.BackgroundColor = XLColor.LightGray;
+                        colIndex++;
+                    }
+
+                    // Agregar filas
+                    for (int i = 0; i < dgv.Rows.Count; i++)
+                    {
+                        for (int j = 0; j < dgv.Columns.Count; j++)
+                        {
+                            worksheet.Cell(i + 2, j + 1).Value = dgv.Rows[i].Cells[j].Value?.ToString() ?? "";
+                        }
+                    }
+
+                    worksheet.Columns().AdjustToContents(); // Ajustar ancho de columnas automáticamente
+                    workbook.SaveAs(saveFileDialog.FileName);
+                    MessageBox.Show("Datos exportados exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+
+
     }
 }

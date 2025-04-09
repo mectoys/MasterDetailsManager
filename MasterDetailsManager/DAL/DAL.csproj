@@ -108,5 +108,9 @@
       <Name>Models</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Script\Cabecera.txt" />
+    <Content Include="Script\Detalle.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

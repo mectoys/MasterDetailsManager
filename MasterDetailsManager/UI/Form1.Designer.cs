@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MasterDetails));
             this.TabMasterDetails = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.export = new System.Windows.Forms.Button();
             this.busqueda = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.listado = new System.Windows.Forms.DataGridView();
@@ -75,12 +76,20 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.export);
             this.tabPage1.Controls.Add(this.busqueda);
             this.tabPage1.Controls.Add(this.label7);
             this.tabPage1.Controls.Add(this.listado);
             resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // export
+            // 
+            resources.ApplyResources(this.export, "export");
+            this.export.Name = "export";
+            this.export.UseVisualStyleBackColor = true;
+            this.export.Click += new System.EventHandler(this.export_Click);
             // 
             // busqueda
             // 
@@ -225,6 +234,7 @@
             this.codigo.BackColor = System.Drawing.SystemColors.Info;
             resources.ApplyResources(this.codigo, "codigo");
             this.codigo.Name = "codigo";
+            this.codigo.ReadOnly = true;
             // 
             // label1
             // 
@@ -311,6 +321,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox totales;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button export;
     }
 }
 
