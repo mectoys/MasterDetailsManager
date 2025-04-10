@@ -1634,9 +1634,9 @@
         e9DLRG9ruIXhVmZmhiC4ZmZmBved5lJXGrXEd+86duyZkbjgnvzsrAPFAZ5bCyKDtiVoy23PD/LevGD1
         6qu1bW3H601U9jmJcq5kYGBghJnB3awmvKtbW/RQS2/vKRNT0/3ltbVHS1yttyREhO5MUJfaXm6qtqu2
         re3klPnzL2w2k7oSKc07Be4CBgYG4XIVoR1LDcTOBnh57kmPDN6eWVR0JExfdXt1c/MxMz3tPfMNxM66
-        GejsUJCRPvrCRuJHuCTPVgYGBmm4CXKcLDknLaXvgQLvqKXso92WEref2St9BdFnrOUew2Lgvov8521m
+        GejsUJCRPvrCWvxHuCTPVgYGBmm4CXKcLDknLaXvgQLvqKXso92WEref2St9BdFnrOUew2Lgvov8521m
         4jcZGBh0kF0AAlptmsLH0aMMHe+2kLnlIsy1hoGBgQXdAAYeFhbbJUaSOBPRDgvpm8LszA7o+tBBmKso
-        x6zlBpKXurWFt681lrp6zk7uaYQU90w9HvYMdMW4AC8DA4M8iMHKwKArw86UiK6AagAAgrLu+wxv4+EA
+        x6zlBpKXurWFt681lrp6zk7uaYQU90w9HvYMdMW4AC8DA4M8iMHKwKArw86UiK6AagAAf5Hu+Q8HGVkA
         AAAASUVORK5CYII=
 </value>
   </data>
@@ -1652,17 +1652,17 @@
   <data name="aceptar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAI6SURBVDhPrZPta1JRHMf3j/Qq6E2tml4f8t6tZBkoq6Rc
-        5ONN8fqQ7qpT0XJo+TB14FpuGBTRYDCClIjWHsKFjGFFzY2ttTGqMQYjgl73bt/Q6M7b2qv6wRfOOfy+
-        n/M9h3NaWv5XHVMrDDKXtkyyxrmD1O7RV4T6C48OE0cP8cyt6rNaQZLZJYadkN9y4FI2hO6Bm7icDeNi
-        OghVyofOhAun4laIxntxwqf5cYSSHOcAUpd2RjLoRH5qGpWd7wfq1fY3GG5HIHoShMx1tcwB6vEUiZ59
-        hmY9W93AWPUdJta/gMhY0R4wLXEAmVtbPhN37jM1qyvKQuY3NsaSmBlUkF7hAeqLf5p+K/F4HG0jdthy
-        6cZcGjPzE5A9ulmi34LJjS2Mzr9GaXmNM9fPLe+zQx6xo7z1lQPIek0LewlYfYXIMSgtfsTpiBXyiA0v
-        1jcbzd5CHm1DDDLFEgcVR82gAtfecwCKNc4JcwyKi6vw3MuDeOCGIuTA/XIFZMoGVYzlHUkUpUH66dpe
-        Ap9hXpix4Pna50YDM5iG6CELwR0G4uHrGJma4cwvN3dAxGhQzXdA+UxVImnB9KdtrpEt3AXZZwFbGOLt
-        Xqx9gDBrARkwLnMAktXN1mPnJyZ5zX8TnY5B/DQMqaP7DQcQXFHeEI15QfU7Gs9WlfKiM8w0pEx6cD7t
-        hzodxLm4G+JRL4gB526rskPHAeol1HWlfn0a+q3Uo10SM5oVMkDXmtURsiyQXn31pEZp5Zn/pX4CH+Lv
-        dD2pkCEAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAI6SURBVDhPrZPtS1NRHMf9R3oV9Kas3O4e2r1awxZsWI3U
+        aI+3XXb30Obd5ja2mmy1ObcFM5uyoIgEQYI2IjIfYsYQWUU5RTNFKhFBIuh17/zGFl13M1/VD75wzuH3
+        /ZzvOZzT1PS/6phWZVS4dCWSM80dpFaPoSw2XHh0mDh6SGBu1p7ViRLsLjHshPKmA5cyIXTfvoHOTBgX
+        U0Fokj60J1w4FbdCMt6LE97OH0co2XEeIHfpZmSDTuSmplHe+X6gXm1/g/FWBJInQShcV0o8oBZPlejZ
+        Z2jUs9UNjFXeYWL9C4i0Fa0B8xIPULh1pTNx5z5TozqiHBR+U30si1lABekVAaC2+KfptxKPx9EyYoct
+        m6rP5TGLMAHZo58lBhhMbmxhdP41istrvLl2bmWfHcqIHaWtrzxA0Wte2EvAGcpElkVx8SNOR6xQRmx4
+        sb5Zb/bmc2gZYpEuFHmoNGoBFbj6ngdQnGlOnGVRWFyF514OxAM3VCEH7pfKIJM2aGKc4EiSKA3ST1f3
+        EviM8+I0g+drn+sN7GAKkoccRHdYSIevYWRqhje/3NwBEaNBNd4B5TNXiH4G05+2+UYufxdkHwMuPyTY
+        vVD9AHGGARkwLfMAktPP1mLnJiYFzX8TnYpB+jQMuaP7DQ8QXVZfl4x5QQ046s9Wk/SiPczWpe734HzK
+        D20qiHNxN6SjXhAZ526zuk3PA2ol1nckf30a+q3co1uSsl0rZICuNqotxCyQXkPlZJfaKjD/S/0EFSLv
+        cA8YsBoAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="aceptar.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -1678,12 +1678,12 @@
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAFmSURBVDhPY2CgFVBRUeGTU9J0BmF1dXVedHmcQEVFhV1B
-        QVNeTkGnTlZB1w+EQWyQmJaWFhu6ehTg7h4bVFQ88W57x+qPJSUzPmdkTvwCwiA2SKygYNIdd/cof3R9
+        QVNeTkGnTlZB1w+EQWyQmJaWFhu6ehTg7h4bVFQ88W57x+qPJSUzPmdkTPwCwiA2SKygYNIdd/cof3R9
         cODpGb8zJrXhLTacklrxNien9bWvb8omdH1w4OGRvKikdPH/0jLsGCTn5Bq7El0fHKhbWfHGxddfi4vr
         +19atvx/ZuYcMC4tW/Y/Lr7/f1Rc/TUtLXsedH1wIK+k6eXsHHc7Onbi/7z8ef8zMueDcW7enP8gMZAc
         SA26PjiQl9cJdHNLvInLAJAcSA26PjiQk9MVDAouuhAfPw2rASA5eXl9AXR9KCA2ofF4UsocrAaA5NDV
         YwCQosTkmeQbEBVbu7eoZPH/5ubt/ysqVoMxiF1UvOQ/SA5dPQawsY9MDI6ouJOYVP8lMrL9KwjHx7d/
-        DguvvG1tG5KMrh4XYAQFKDIGiaErogoAAPyH4X2uG3B5AAAAAElFTkSuQmCC
+        DguvvG1tG5KMrh4XYAQFKDIGiaErogoAAPYt4Xszao6jAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="anular.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -1723,7 +1723,7 @@
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>49</value>
+    <value>58</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>8, 16</value>
