@@ -56,7 +56,7 @@ git clone https://github.com/mectoys/MasterDetailsManager.git
 
 Abre MySQL Workbench o cualquier cliente MySQL.
 
-Ejecuta el script database.sql ubicado en la raíz del proyecto para crear las tablas necesarias.
+Ejecuta el script Cabecera.txt y  Detalle.txt ubicado en la carpeta Script en la raíz de la solución del proyecto para crear las tablas necesarias.
 
 🔧 Configura la conexión a la base de datos:
 
