@@ -1,12 +1,10 @@
-﻿CREATE TABLE `detalle` (
-  `IDOCVTA` int NOT NULL,
-  `IDPRODUCTO` int DEFAULT NULL,
-  `PRECIO` decimal(5,2) DEFAULT NULL,
-  `CANTIDAD` decimal(5,2) DEFAULT NULL,
-  `DESCUENTO` decimal(5,2) DEFAULT NULL,
-  `SUBTOTAL` decimal(5,2) DEFAULT NULL,
-  `MONTOIGV` decimal(5,2) DEFAULT NULL,
-  `TOTAL` decimal(5,2) DEFAULT NULL,
-  `detailcol` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`IDOCVTA`)
-) 
+﻿CREATE TABLE `facturadetalle` (
+  `Id` int NOT NULL AUTO_INCREMENT,
+  `FacturaId` int NOT NULL,
+  `Producto` varchar(100) NOT NULL,
+  `Cantidad` int NOT NULL,
+  `Precio` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `FacturaId` (`FacturaId`),
+  CONSTRAINT `facturadetalle_ibfk_1` FOREIGN KEY (`FacturaId`) REFERENCES `factura` (`Id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
