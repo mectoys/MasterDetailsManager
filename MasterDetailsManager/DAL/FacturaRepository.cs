@@ -13,6 +13,11 @@ namespace DAL
 
         public DataSet ExecuteQuery(string sql)
         {
+            /*
+           USING:es una estructura de control que se utiliza para manejar correctamente recursos que deben
+            ser liberados, como conexiones a base de datos, archivos, streams, etc.
+             
+             */
             using (var conn = dBConnection.GetConnection())
             {
                 conn.Open();
@@ -22,8 +27,6 @@ namespace DAL
                 return dataSet;
             }
         }
-
-
 
         public int InsertarFacturaConDetalles(Factura factura, List<FacturaDetalle> detalles)
         {
@@ -37,6 +40,11 @@ namespace DAL
                 {
                     try
                     {
+                        /*
+                         Cuando colocas una @ antes de una cadena de texto, estás indicando que esa es una 
+                        cadena verbatim.
+
+                         */
                         var insertFacturaSql = @"INSERT INTO voucherdb.factura (Cliente, Fecha, state) 
                                          VALUES (@Cliente, @Fecha, 1);
                                          SELECT LAST_INSERT_ID();";

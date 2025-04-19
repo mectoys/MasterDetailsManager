@@ -1,14 +1,10 @@
-﻿using BLL;
+﻿using ClosedXML.Excel;
 using DAL;
 using Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Windows.Forms;
-using ClosedXML.Excel;
-using System.IO;
 
 namespace UI
 {
@@ -135,12 +131,7 @@ namespace UI
                 cliente.Focus();
                 return;
             }
-            if (detalle.Rows.Count==0)
-            {
-                MessageBox.Show("Ingrese datos al detalle", "Master Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cliente.Focus();
-                return;
-            }
+   
 
             if (Tipo == 0)
             {
@@ -151,6 +142,13 @@ namespace UI
                     Detalles = _detalles
 
                 };
+
+                if (_detalles == null || _detalles.Count == 0)
+                {
+                    MessageBox.Show("Debe agregar al menos un producto a la factura.", "Master Details", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
 
                 codigo.Text= _facturaBLL.CrearFactura(factura).ToString();
             }
@@ -170,6 +168,8 @@ namespace UI
             Tipo = 1;
             CalcularTotal();
             MessageBox.Show("Operaación realizada", "Master Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
+       
+        
         }
 
         private void TabMasterDetails_SelectedIndexChanged(object sender, EventArgs e)
